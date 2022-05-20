@@ -1,8 +1,12 @@
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import FunctionalForm from './pages/FunctionalForm';
+
 const App = () => {
   return (
-    <div>
-      <h1>Hello, Agrotis!</h1>
-    </div>
+    <Routes>
+      <Route path='/' element={ <FunctionalForm /> } />
+    </Routes>
   );
 }
 
