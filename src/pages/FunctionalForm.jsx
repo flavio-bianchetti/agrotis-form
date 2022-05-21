@@ -3,7 +3,7 @@
 
 import React from "react";
 import { useForm } from "react-hook-form";
-import Button from "@mui/material/Button";
+import { Button, TextField } from "@mui/material";
 
 const FuncionalForm = () => {
   const { register, handleSubmit } = useForm();
@@ -26,9 +26,9 @@ const FuncionalForm = () => {
             </Button>
           </div>
         </header>
-        <input {...register("name")} placeholder="Nome *" data-testId="input-name" />
-        <input {...register("initialDate")} placeholder="Data Inicial *" data-testId="input-initial-date"/>
-        <input {...register("finalDate")} placeholder="Data Final *" data-testId="input-final-date"/>
+        <TextField {...register("name")} placeholder="Nome *" data-testId="input-name" variant="standard" />
+        <TextField {...register("initialDate")} placeholder="Data Inicial *" data-testId="input-initial-date" variant="standard"/>
+        <TextField {...register("finalDate")} placeholder="Data Final *" data-testId="input-final-date"  variant="standard" />
         <select {...register("properties")} placeholder="Propriedade *" data-testId="select-properties" >
           <option value="1">Propriedade 1</option>
           <option value="2">Propriedade 2</option>
