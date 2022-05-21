@@ -4,7 +4,6 @@ import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouterProvider from '../renderWithRouterProvider';
 
-
 describe('1 - Renderiza a página do formulário', () => {
   it ('o título está presente', () => {
     const { getByText } = renderWithRouterProvider(<App />);
