@@ -26,9 +26,18 @@ const FuncionalForm = () => {
             </Button>
           </div>
         </header>
-        <TextField {...register("name")} placeholder="Nome *" data-testId="input-name" variant="standard" />
-        <TextField {...register("initialDate")} placeholder="Data Inicial *" data-testId="input-initial-date" variant="standard"/>
-        <TextField {...register("finalDate")} placeholder="Data Final *" data-testId="input-final-date"  variant="standard" />
+        <TextField 
+          data-testId="input-name"
+          {...register("name")}
+          required
+          label="Nome"
+          placeholder="Nome"
+          variant="standard"
+          // error
+          // helperText="teste"
+        />
+        <TextField {...register("initialDate")} placeholder="Data Inicial" data-testId="input-initial-date" variant="standard" required label="Data Inicial"/>
+        <TextField {...register("finalDate")} placeholder="Data Final" data-testId="input-final-date"  variant="standard" required label="Data Final"/>
         <select {...register("properties")} placeholder="Propriedade *" data-testId="select-properties" >
           <option value="1">Propriedade 1</option>
           <option value="2">Propriedade 2</option>
