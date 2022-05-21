@@ -3,6 +3,7 @@
 
 import React from "react";
 import { useForm } from "react-hook-form";
+import Button from "@mui/material/Button";
 
 const FuncionalForm = () => {
   const { register, handleSubmit } = useForm();
@@ -16,13 +17,13 @@ const FuncionalForm = () => {
             <h1>Teste front-end</h1>
           </div>
           <div>
-            <button
+            <Button
+              variant="text"
               data-testId="button-save"
               type="submit"
-              disabled="false"
             >
               Salvar
-            </button>
+            </Button>
           </div>
         </header>
         <input {...register("name")} placeholder="Nome *" data-testId="input-name" />
