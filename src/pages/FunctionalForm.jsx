@@ -18,6 +18,7 @@ const FuncionalForm = () => {
   const [finalDate, setFinalDate] = React.useState(new Date());
   const [properties, setProperties] = React.useState('');
   const [laboratory, setLaboratory] = React.useState('');
+  const [textArea, setTextArea] = React.useState('');
 
   const handleChangeInitialDate = (newValue) => {
     setInitialDate(newValue);
@@ -33,6 +34,10 @@ const FuncionalForm = () => {
 
   const handleChangeLaboratory = (event) => {
     setLaboratory(event.target.value);
+  };
+
+  const handleChangeTextArea = (event) => {
+    setTextArea(event.target.value);
   };
 
   return (
@@ -126,8 +131,16 @@ const FuncionalForm = () => {
             <MenuItem value={5}>Agro Brasil</MenuItem>
           </Select>
         </FormControl>
-        <textarea {...register("observations")} placeholder="Observações" data-testId="textarea-observations" />
-        
+        <TextField
+          data-testId="textarea-observations"
+          {...register("description")}
+          label="Observações"
+          placeholder="Observações"
+          variant="standard"
+          rows={5}
+          value={ textArea }
+          onChange={ handleChangeTextArea }
+        />
       </form>
     </section>
   );
