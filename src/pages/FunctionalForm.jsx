@@ -1,10 +1,11 @@
 // The construction of this page was based on:
 // https://react-hook-form.com/get-started/
 // https://mui.com/pt/x/react-date-pickers/getting-started/
+// https://mui.com/pt/material-ui/react-select/
 
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, InputLabel, MenuItem, FormControl, Select } from "@mui/material";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
@@ -15,6 +16,8 @@ const FuncionalForm = () => {
 
   const [initialDate, setInitialDate] = React.useState(new Date());
   const [finalDate, setFinalDate] = React.useState(new Date());
+  const [properties, setProperties] = React.useState('');
+  const [laboratory, setLaboratory] = React.useState('');
 
   const handleChangeInitialDate = (newValue) => {
     setInitialDate(newValue);
@@ -22,6 +25,14 @@ const FuncionalForm = () => {
 
   const handleChangeFinalDate = (newValue) => {
     setFinalDate(newValue);
+  };
+
+  const handleChangeProperties = (event) => {
+    setProperties(event.target.value);
+  };
+
+  const handleChangeLaboratory = (event) => {
+    setLaboratory(event.target.value);
   };
 
   return (
@@ -87,16 +98,34 @@ const FuncionalForm = () => {
             }
           />
         </LocalizationProvider>
-        <select {...register("properties")} placeholder="Propriedade *" data-testId="select-properties" >
-          <option value="1">Propriedade 1</option>
-          <option value="2">Propriedade 2</option>
-          <option value="3">Propriedade 3</option>
-        </select>
-        <select {...register("laboratory")} placeholder="Laboratório *" data-testId="select-laboratory" >
-          <option value="1">Laboratório 1</option>
-          <option value="2">Laboratório 2</option>
-          <option value="3">Laboratório 3</option>
-        </select>
+        <FormControl variant= "standard" sx={{ m: 1, minWidth: 120 }} size="small">
+          <InputLabel>Propriedade</InputLabel>
+          <Select
+            data-testId="select-properties"
+            value={ properties }
+            onChange={ handleChangeProperties }
+          >
+            <MenuItem value={1}>Agrotis 1</MenuItem>
+            <MenuItem value={2}>Agrotis 2</MenuItem>
+            <MenuItem value={3}>Agrotis 3</MenuItem>
+            <MenuItem value={4}>Agrotis 4</MenuItem>
+            <MenuItem value={5}>Agrotis 5</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl variant= "standard" sx={{ m: 1, minWidth: 120 }} size="small">
+          <InputLabel>Laboratório</InputLabel>
+          <Select
+            data-testId="select-laboratory"
+            value={ laboratory }
+            onChange={ handleChangeLaboratory }
+          >
+            <MenuItem value={1}>Agro Skynet</MenuItem>
+            <MenuItem value={2}>Umbrella Agro</MenuItem>
+            <MenuItem value={3}>Osborn Agro</MenuItem>
+            <MenuItem value={4}>Skyrim Agro</MenuItem>
+            <MenuItem value={5}>Agro Brasil</MenuItem>
+          </Select>
+        </FormControl>
         <textarea {...register("observations")} placeholder="Observações" data-testId="textarea-observations" />
         
       </form>
