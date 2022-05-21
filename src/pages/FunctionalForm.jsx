@@ -1,13 +1,28 @@
 // The construction of this page was based on:
 // https://react-hook-form.com/get-started/
+// https://mui.com/pt/x/react-date-pickers/getting-started/
 
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Button, TextField } from "@mui/material";
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 const FuncionalForm = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = data => console.log(data);
+
+  const [initialDate, setInitialDate] = React.useState(new Date());
+  const [finalDate, setFinalDate] = React.useState(new Date());
+
+  const handleChangeInitialDate = (newValue) => {
+    setInitialDate(newValue);
+  };
+
+  const handleChangeFinalDate = (newValue) => {
+    setFinalDate(newValue);
+  };
 
   return (
     <section>
@@ -26,7 +41,7 @@ const FuncionalForm = () => {
             </Button>
           </div>
         </header>
-        <TextField 
+        <TextField
           data-testId="input-name"
           {...register("name")}
           required
@@ -36,8 +51,42 @@ const FuncionalForm = () => {
           // error
           // helperText="teste"
         />
-        <TextField {...register("initialDate")} placeholder="Data Inicial" data-testId="input-initial-date" variant="standard" required label="Data Inicial"/>
-        <TextField {...register("finalDate")} placeholder="Data Final" data-testId="input-final-date"  variant="standard" required label="Data Final"/>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <DesktopDatePicker
+            inputFormat="dd/MM/yyyy"
+            value={ initialDate }
+            onChange={ handleChangeInitialDate }
+            renderInput={
+              (params) => 
+              <TextField
+                data-testId="input-initial-date"
+                {...params}
+                required
+                label="Data Inicial"
+                placeholder="Data Inicial"
+                variant="standard"
+            />
+            }
+          />
+        </LocalizationProvider>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <DesktopDatePicker
+            inputFormat="dd/MM/yyyy"
+            value={ finalDate }
+            onChange={ handleChangeFinalDate }
+            renderInput={
+              (params) => 
+              <TextField
+                data-testId="input-final-date"
+                {...params}
+                required
+                label="Data Final"
+                placeholder="Data Final"
+                variant="standard"
+            />
+            }
+          />
+        </LocalizationProvider>
         <select {...register("properties")} placeholder="Propriedade *" data-testId="select-properties" >
           <option value="1">Propriedade 1</option>
           <option value="2">Propriedade 2</option>
