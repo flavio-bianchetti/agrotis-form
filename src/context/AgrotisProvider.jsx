@@ -6,6 +6,8 @@ import { infosPropriedades, infosLaboratorios } from "../data/AgrotisDB";
 
 const AgrotisProvider = ({ children }) => {
   const { register, handleSubmit } = useForm();
+  const [initialDate, setInitialDate] = React.useState(new Date().toLocaleString());
+  const [finalDate, setFinalDate] = React.useState(new Date().toLocaleString());
   const [dataProperties, setDataProperties] = useState([]);
   const [dataLaboratories, setDataLaboratories] = useState([]);
   const [properties, setProperties] = React.useState("");
@@ -28,6 +30,14 @@ const AgrotisProvider = ({ children }) => {
     console.log("event", event);
   }
 
+  const handleChangeInitialDate = (newValue) => {
+    setInitialDate(newValue);
+  };
+
+  const handleChangeFinalDate = (newValue) => {
+    setFinalDate(newValue);
+  };
+
   const handleChangeProperties = (event) => {
     setProperties(event.target.value);
   };
@@ -41,6 +51,10 @@ const AgrotisProvider = ({ children }) => {
     handleSubmit,
     dataProperties,
     dataLaboratories,
+    initialDate,
+    finalDate,
+    handleChangeInitialDate,
+    handleChangeFinalDate,
     properties,
     laboratory,
     handleChangeProperties,
