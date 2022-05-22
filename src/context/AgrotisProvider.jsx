@@ -10,6 +10,7 @@ const AgrotisProvider = ({ children }) => {
   const [finalDate, setFinalDate] = React.useState(new Date().toLocaleString());
   const [dataProperties, setDataProperties] = useState([]);
   const [dataLaboratories, setDataLaboratories] = useState([]);
+  const [isNameError, setIsNameError] = useState(false);
   const [properties, setProperties] = React.useState("");
   const [laboratory, setLaboratory] = React.useState("");
   
@@ -17,7 +18,7 @@ const AgrotisProvider = ({ children }) => {
     setDataProperties(infosPropriedades);
     setDataLaboratories(infosLaboratorios);
   }, []);
-
+  
   const onSubmit = (data, event) => {
     console.log("data", data);
     console.log("event", event);
@@ -51,6 +52,9 @@ const AgrotisProvider = ({ children }) => {
     handleSubmit,
     dataProperties,
     dataLaboratories,
+    isNameError,
+    onSubmit,
+    onError,
     initialDate,
     finalDate,
     handleChangeInitialDate,
