@@ -38,7 +38,7 @@ const SelectComponent = ({
                 key={ item.id }
                 value={ item.id }
               >
-                { /* documentação: https://mui.com/pt/material-ui/api/list-item-text/ */}
+                { /* documentation: https://mui.com/pt/material-ui/api/list-item-text/ */}
                 {/* <ListItemText primary={ item.name }  secondary={ item.cnpj }/> */}
                 { item.name }
               </MenuItem>
@@ -47,7 +47,7 @@ const SelectComponent = ({
         }
       </Select>
       <FormHelperText>
-        { selectError === true ? selectHelperText : "" }
+        { selectHelperText }
       </FormHelperText>
     </FormControl>
   );
