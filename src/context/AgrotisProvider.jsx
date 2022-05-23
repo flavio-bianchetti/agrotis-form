@@ -22,6 +22,8 @@ const AgrotisProvider = ({ children }) => {
   const [isNameError, setIsNameError] = useState(false);
   const [properties, setProperties] = React.useState("");
   const [laboratory, setLaboratory] = React.useState("");
+  const [isLaboratoryError, setIsLaboratoryError] = useState(false);
+
   
   useEffect(() => {
     setDataProperties(infosPropriedades);
@@ -62,6 +64,9 @@ const AgrotisProvider = ({ children }) => {
 
   const handleChangeLaboratory = (event) => {
     setLaboratory(event.target.value);
+    setIsLaboratoryError(false);
+  };
+
   };
 
   const agrotisValues = {
@@ -81,8 +86,9 @@ const AgrotisProvider = ({ children }) => {
     handleChangeProperty,
     dataProperties,
     laboratory,
-    handleChangeProperties,
+    isLaboratoryError,
     handleChangeLaboratory,
+    dataLaboratories,
 };
 
   return (
