@@ -52,8 +52,8 @@ const FuncionalForm = () => {
             <BarComponent
               title="Teste front-end"
               btnName="Salvar"
-              dataTestidTitle="title-form"
-              dataTestidButton="button-save"
+              dataTestIdTitle="title-form"
+              dataTestIdButton="button-save"
             />
             <Stack direction="row" padding={2} spacing={2} sx={{ flexGrow: 1 }}>
               <Stack direction="row" spacing={2} sx={{ flexGrow: 1 }}>
