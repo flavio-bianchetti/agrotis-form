@@ -3,3 +3,7 @@ body {
   padding: 0;
   background-color: #f3f2f1;
 }
+
+.span-counter {
+  float: right;
+}
