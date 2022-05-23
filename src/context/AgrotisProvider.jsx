@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
 import AgrotisContext from "./AgrotisContext";
 import { infosPropriedades, infosLaboratorios } from "../data/AgrotisDB";
 
@@ -19,8 +18,6 @@ const AgrotisProvider = ({ children }) => {
   const [isPropertyError, setIsPropertyError] = useState(false);
 
   const [dataLaboratories, setDataLaboratories] = useState([]);
-  const [isNameError, setIsNameError] = useState(false);
-  const [properties, setProperties] = React.useState("");
   const [laboratory, setLaboratory] = React.useState("");
   const [isLaboratoryError, setIsLaboratoryError] = useState(false);
 
@@ -117,11 +114,10 @@ const AgrotisProvider = ({ children }) => {
   };
 
   const agrotisValues = {
+    onSubmit,
     fullNameUser,
     handleChangeFullNameUser,
     isNameError,
-    onSubmit,
-    onError,
     initialDate,
     isInitialDateError,
     handleChangeInitialDate,
