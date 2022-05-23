@@ -46,16 +46,19 @@ const FuncionalForm = () => {
             <BarComponent
               title="Teste front-end"
               btnName="Salvar"
+              dataTestidTitle="title-form"
+              dataTestidButton="button-save"
             />
-            <Stack direction="row" padding={2} spacing={2}>
-              <TextFieldComponent
-                params={ register("name", { required: true }) }
-                data-testId="input-name"
-                label="Nome"
-                placeholder="Nome"
-                error={ isNameError }
-                helperText={ isNameError ? "Campo obrigatório" : "" }
-              />
+                <TextFieldComponent
+                  dataTestId="input-name"
+                  error={ isNameError }
+                  label="Nome *"
+                  maxLength={ 40 }
+                  helperText={ isNameError ? "Campo obrigatório" : "" }
+                  onChange={ handleChangeFullNameUser }
+                  placeholder="Nome "
+                  value={ fullNameUser }
+                />
               <Container maxWidth="lg">
                 <Stack direction="row" spacing={2} >
                   <DesktopDatePickerComponent
@@ -63,14 +66,18 @@ const FuncionalForm = () => {
                     DesktopDataPickerValue={ initialDate }
                     DesktopDataPickerOnChange={ handleChangeInitialDate }
                     TextFieldComponentDataTestId="input-initial-date"
-                    TextFieldComponentPlaceholder="Data Inicial *"
+                    TextFieldComponentPlaceholder="Data Inicial"
+                    TextFieldComponentError={ isInitialDateError }
+                    TextFieldComponentHelperText={ 'Error' }
                   />
                   <DesktopDatePickerComponent
-                    DesktopDataPickerLabel="Data Final"
+                    DesktopDataPickerLabel="Data Final *"
                     DesktopDataPickerValue={ finalDate }
                     DesktopDataPickerOnChange={ handleChangeFinalDate }
                     TextFieldComponentDataTestId="input-final-date"
                     TextFieldComponentPlaceholder="Data Final *"
+                    TextFieldComponentError={ isFinalDateError }
+                    TextFieldComponentHelperText={ 'Error' }
                   />
                 </Stack>
               </Container>
@@ -79,9 +86,11 @@ const FuncionalForm = () => {
               <SelectComponent
                 inputLabelDescription="Propriedades *"
                 selectDataTestId="select-properties"
-                selectValue={ properties }
-                selectOnChange={ handleChangeProperties }
+                selectValue={ property }
+                selectOnChange={ handleChangeProperty }
                 selectMenuItens={ dataProperties }
+                selectHelperText={ 'Error' }
+                selectError={ isPropertyError }
               />
               <SelectComponent
                 inputLabelDescription="Laboratório *"
@@ -89,6 +98,8 @@ const FuncionalForm = () => {
                 selectValue={ laboratory }
                 selectOnChange={ handleChangeLaboratory }
                 selectMenuItens={ dataLaboratories }
+                selectHelperText={ 'Error' }
+                selectError={ isLaboratoryError }
               />
             </Stack>
             <Stack direction="row" padding={2}>
@@ -96,7 +107,10 @@ const FuncionalForm = () => {
                 dataTestId="textarea-observations"
                 params={ register("description") }
                 label="Observações"
+                maxLength={ 1000 }
+                onChange={ handleChangeObservations }
                 rows={ 5 }
+                value={ observations }
               />
             </Stack>
           </Stack>
