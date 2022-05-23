@@ -7,20 +7,27 @@ const TextFieldComponent = ({
   dataTestId,
   helperText,
   label,
-  params,
+  maxLength,
+  onChange,
   placeholder,
+  value,
 }) => {
-
   return (
     <TextField
       error={ error }
-      data-testId={ dataTestId }
+      data-testid={ dataTestId }
       fullWidth
-      helperText={ helperText }
+      helperText={
+        error
+        ? helperText
+        : <span className="span-counter" >{ `${ value.length || 0}/${maxLength || 0}` }</span>
+      }
+      inputProps={ { maxLength: maxLength } }
       label={ label }
+      onChange={ onChange }
       placeholder={ placeholder }
       variant="standard"
-      {...params}
+      value={ value }
     />
   );
 }
@@ -30,8 +37,10 @@ TextFieldComponent.propTypes = {
   dataTestId: PropTypes.string.isRequired,
   helperText: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  maxLength: PropTypes.number.isRequired,
   placeholder: PropTypes.string.isRequired,
-  params: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 }
 
 export default TextFieldComponent;
