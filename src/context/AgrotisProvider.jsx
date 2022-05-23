@@ -5,7 +5,9 @@ import AgrotisContext from "./AgrotisContext";
 import { infosPropriedades, infosLaboratorios } from "../data/AgrotisDB";
 
 const AgrotisProvider = ({ children }) => {
-  const { register, handleSubmit } = useForm();
+  const [fullNameUser, setFullNameUser] = useState("");
+  const [isNameError, setIsNameError] = useState(false);
+
   const [initialDate, setInitialDate] = React.useState(new Date().toLocaleString());
   const [finalDate, setFinalDate] = React.useState(new Date().toLocaleString());
   const [dataProperties, setDataProperties] = useState([]);
@@ -31,6 +33,11 @@ const AgrotisProvider = ({ children }) => {
     console.log("event", event);
   }
 
+  const handleChangeFullNameUser = (event) => {
+    setFullNameUser(event.target.value);
+    setIsNameError(false);
+  };
+
   const handleChangeInitialDate = (newValue) => {
     setInitialDate(newValue);
   };
@@ -48,10 +55,8 @@ const AgrotisProvider = ({ children }) => {
   };
 
   const agrotisValues = {
-    register,
-    handleSubmit,
-    dataProperties,
-    dataLaboratories,
+    fullNameUser,
+    handleChangeFullNameUser,
     isNameError,
     onSubmit,
     onError,
