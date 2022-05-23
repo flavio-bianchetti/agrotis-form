@@ -21,18 +21,25 @@ const FuncionalForm = () => {
     register,
     handleSubmit,
     onSubmit,
-    onError,
-    dataProperties,
-    dataLaboratories,
+    fullNameUser,
+    handleChangeFullNameUser,
     isNameError,
     initialDate,
-    finalDate,
+    isInitialDateError,
     handleChangeInitialDate,
+    finalDate,
+    isFinalDateError,
     handleChangeFinalDate,
-    properties,
+    property,
+    isPropertyError,
+    handleChangeProperty,
+    dataProperties,
     laboratory,
-    handleChangeProperties,
+    isLaboratoryError,
     handleChangeLaboratory,
+    dataLaboratories,
+    observations,
+    handleChangeObservations,
   } = React.useContext(AgrotisContext);
 
   
@@ -41,7 +48,7 @@ const FuncionalForm = () => {
     <ThemeProvider theme={ Theme }>
       <HeaderComponent />
       <Box sx= {{ p: 2, flexGrow: 1 }}>
-        <form onSubmit={ handleSubmit(onSubmit, onError ) }>
+        <form onSubmit={ (event) => onSubmit(event) }>
           <Stack direction="column" spacing={2} boxShadow={2} >
             <BarComponent
               title="Teste front-end"
