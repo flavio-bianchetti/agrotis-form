@@ -15,6 +15,7 @@ import SelectComponent from "../components/SelectComponent";
 import TextAreaComponent from "../components/TextAreaComponent";
 import AgrotisContext from "../context/AgrotisContext";
 import Theme from "../themes/theme";
+import WarningIcon from "@mui/icons-material/Warning";
 
 const FuncionalForm = () => {
   const {
@@ -38,9 +39,10 @@ const FuncionalForm = () => {
     dataLaboratories,
     observations,
     handleChangeObservations,
+    cNPJProperty,
   } = React.useContext(AgrotisContext);
 
-  
+  const warning = <span className="warning"><WarningIcon fontSize="small"/> Error</span>;
 
   return (
     <ThemeProvider theme={ Theme }>
@@ -51,8 +53,8 @@ const FuncionalForm = () => {
             <BarComponent
               title="Teste front-end"
               btnName="Salvar"
-              dataTestidTitle="title-form"
-              dataTestidButton="button-save"
+              dataTestIdTitle="title-form"
+              dataTestIdButton="button-save"
             />
             <Stack direction="row" padding={2} spacing={2} sx={{ flexGrow: 1 }}>
               <Stack direction="row" spacing={2} sx={{ flexGrow: 1 }}>
@@ -61,7 +63,7 @@ const FuncionalForm = () => {
                   error={ isNameError }
                   label="Nome *"
                   maxLength={ 40 }
-                  helperText={ isNameError ? "Campo obrigatório" : "" }
+                  helperText={ isNameError ? warning : cNPJProperty }
                   onChange={ handleChangeFullNameUser }
                   placeholder="Nome "
                   value={ fullNameUser }
@@ -75,7 +77,7 @@ const FuncionalForm = () => {
                     TextFieldComponentDataTestId="input-initial-date"
                     TextFieldComponentPlaceholder="Data Inicial"
                     TextFieldComponentError={ isInitialDateError }
-                    TextFieldComponentHelperText={ 'Error' }
+                    TextFieldComponentHelperText={ warning }
                   />
               </Stack>
               <Stack direction="row" spacing={2}>
@@ -86,7 +88,7 @@ const FuncionalForm = () => {
                     TextFieldComponentDataTestId="input-final-date"
                     TextFieldComponentPlaceholder="Data Final *"
                     TextFieldComponentError={ isFinalDateError }
-                    TextFieldComponentHelperText={ 'Error' }
+                    TextFieldComponentHelperText={ warning }
                   />
               </Stack>
             </Stack>
@@ -97,7 +99,7 @@ const FuncionalForm = () => {
                 selectValue={ property }
                 selectOnChange={ handleChangeProperty }
                 selectMenuItens={ dataProperties }
-                selectHelperText={ 'Error' }
+                selectHelperText={ isPropertyError ? warning : cNPJProperty }
                 selectError={ isPropertyError }
               />
               <SelectComponent
@@ -106,7 +108,7 @@ const FuncionalForm = () => {
                 selectValue={ laboratory }
                 selectOnChange={ handleChangeLaboratory }
                 selectMenuItens={ dataLaboratories }
-                selectHelperText={ 'Error' }
+                selectHelperText={ isLaboratoryError ? warning : "" }
                 selectError={ isLaboratoryError }
               />
             </Stack>

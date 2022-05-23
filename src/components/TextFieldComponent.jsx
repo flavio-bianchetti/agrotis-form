@@ -19,7 +19,7 @@ const TextFieldComponent = ({
       fullWidth
       helperText={
         error
-        ? helperText
+        ? `${helperText}`
         : <span className="span-counter" >{ `${ value.length || 0}/${maxLength || 0}` }</span>
       }
       inputProps={ { maxLength: maxLength } }

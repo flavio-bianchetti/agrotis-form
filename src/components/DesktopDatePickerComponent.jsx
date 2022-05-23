@@ -29,7 +29,7 @@ const DesktopDatePickerComponent = ({
               { ...params }
               placeholder={ TextFieldComponentPlaceholder }
               error={ TextFieldComponentError }
-              helperText={ TextFieldComponentError ? `${TextFieldComponentHelperText}` : "" }
+              helperText={ TextFieldComponentError ? TextFieldComponentHelperText : "" }
               variant="standard"
             />
           }
@@ -46,7 +46,7 @@ DesktopDatePickerComponent.propTypes = {
   TextFieldComponentDataTestId: PropTypes.string.isRequired,
   TextFieldComponentPlaceholder: PropTypes.string.isRequired,
   TextFieldComponentError: PropTypes.bool.isRequired,
-  TextFieldComponentHelperText: PropTypes.string.isRequired,
+  TextFieldComponentHelperText: PropTypes.element.isRequired,
 };
 
 export default DesktopDatePickerComponent;

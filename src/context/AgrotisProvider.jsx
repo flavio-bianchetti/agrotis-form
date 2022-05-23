@@ -7,15 +7,16 @@ const AgrotisProvider = ({ children }) => {
   const [fullNameUser, setFullNameUser] = useState("");
   const [isNameError, setIsNameError] = useState(false);
 
-  const [initialDate, setInitialDate] = React.useState(new Date().toLocaleString());
+  const [initialDate, setInitialDate] = React.useState("");
   const [isInitialDateError, setIsInitialDateError] = useState(false);
 
-  const [finalDate, setFinalDate] = React.useState(new Date().toLocaleString());
+  const [finalDate, setFinalDate] = React.useState("");
   const [isFinalDateError, setIsFinalDateError] = useState(false);
 
   const [dataProperties, setDataProperties] = useState([]);
   const [property, setProperty] = React.useState("");
   const [isPropertyError, setIsPropertyError] = useState(false);
+  const [cNPJProperty, setCNPJProperty] = useState("");
 
   const [dataLaboratories, setDataLaboratories] = useState([]);
   const [laboratory, setLaboratory] = React.useState("");
@@ -38,8 +39,8 @@ const AgrotisProvider = ({ children }) => {
 
     const result = {
       nome: fullNameUser,
-      dataInicial: initialDate.toISOString(),
-      dataFinal: finalDate.toISOString(),
+      dataInicial: new Date(initialDate).toISOString(),
+      dataFinal: new Date(finalDate).toISOString(),
       infosPropriedade: {
           id: selectedProperty.id,
           nome: selectedProperty.name,
@@ -80,8 +81,6 @@ const AgrotisProvider = ({ children }) => {
       setIsLaboratoryError(true);
       return;
     }
-
-    console.log("sucess");
   }
 
   const handleChangeFullNameUser = (event) => {
@@ -101,6 +100,7 @@ const AgrotisProvider = ({ children }) => {
 
   const handleChangeProperty = (event) => {
     setProperty(event.target.value);
+    setCNPJProperty(dataProperties.find((p) => p.id === event.target.value).cnpj);
     setIsPropertyError(false);
   };
 
@@ -128,6 +128,7 @@ const AgrotisProvider = ({ children }) => {
     isPropertyError,
     handleChangeProperty,
     dataProperties,
+    cNPJProperty,
     laboratory,
     isLaboratoryError,
     handleChangeLaboratory,
