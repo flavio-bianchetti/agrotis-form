@@ -30,16 +30,34 @@ const AgrotisProvider = ({ children }) => {
     setDataProperties(infosPropriedades);
     setDataLaboratories(infosLaboratorios);
   }, []);
-  
-  const onSubmit = (data, event) => {
-    console.log("data", data);
-    console.log("event", event);
-    console.log("register", register);
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    validateAllfields();
+
+    const selectedProperty = dataProperties.find((p) => p.id === property);
+    const selectedLaborarory = dataLaboratories.find((l) => l.id === laboratory);
+
+    const result = {
+      nome: fullNameUser,
+      dataInicial: initialDate.toISOString(),
+      dataFinal: finalDate.toISOString(),
+      infosPropriedade: {
+          id: selectedProperty.id,
+          nome: selectedProperty.name,
+      },
+      cnpj: selectedProperty.cnpj,
+      laboratorio: {
+          id: selectedLaborarory.id,
+          nome: selectedLaborarory.name,
+      },
+      observacoes: observations,
+    };
+
+    console.log(result);
   };
-  
-  const onError = (event) => {
-    console.log("wrong");
-    setIsNameError(true);
+
     console.log("event", event);
   }
 
