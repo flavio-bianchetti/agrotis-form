@@ -38,6 +38,7 @@ const FuncionalForm = () => {
     dataLaboratories,
     observations,
     handleChangeObservations,
+    cNPJProperty,
   } = React.useContext(AgrotisContext);
 
   
@@ -61,7 +62,7 @@ const FuncionalForm = () => {
                   error={ isNameError }
                   label="Nome *"
                   maxLength={ 40 }
-                  helperText={ isNameError ? "Campo obrigatório" : "" }
+                  helperText={ isNameError ? warning : cNPJProperty }
                   onChange={ handleChangeFullNameUser }
                   placeholder="Nome "
                   value={ fullNameUser }
