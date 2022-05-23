@@ -58,7 +58,33 @@ const AgrotisProvider = ({ children }) => {
     console.log(result);
   };
 
-    console.log("event", event);
+  const validateAllfields = () => {
+    if (fullNameUser.length === 0) { 
+      setIsNameError(true);
+      return;
+    }
+
+    if (!(initialDate instanceof Date && !isNaN(initialDate))) {
+      setIsInitialDateError(true);
+      return;
+    }
+
+    if (!(finalDate instanceof Date && !isNaN(finalDate))) {
+      setIsFinalDateError(true);
+      return;
+    }
+
+    if (!property) {
+      setIsPropertyError(true);
+      return;
+    }
+
+    if (!laboratory) {
+      setIsLaboratoryError(true);
+      return;
+    }
+
+    console.log("sucess");
   }
 
   const handleChangeFullNameUser = (event) => {
