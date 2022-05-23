@@ -5,7 +5,7 @@
 
 import React from "react";
 import Stack from "@mui/material/Stack";
-import { Container, Box } from "@mui/system";
+import { Box } from "@mui/system";
 import { ThemeProvider } from "@mui/material/styles";
 import HeaderComponent from "../components/HeaderComponent";
 import BarComponent from "../components/BarComponent";
@@ -18,8 +18,6 @@ import Theme from "../themes/theme";
 
 const FuncionalForm = () => {
   const {
-    register,
-    handleSubmit,
     onSubmit,
     fullNameUser,
     handleChangeFullNameUser,
@@ -56,6 +54,8 @@ const FuncionalForm = () => {
               dataTestidTitle="title-form"
               dataTestidButton="button-save"
             />
+            <Stack direction="row" padding={2} spacing={2} sx={{ flexGrow: 1 }}>
+              <Stack direction="row" spacing={2} sx={{ flexGrow: 1 }}>
                 <TextFieldComponent
                   dataTestId="input-name"
                   error={ isNameError }
@@ -66,10 +66,10 @@ const FuncionalForm = () => {
                   placeholder="Nome "
                   value={ fullNameUser }
                 />
-              <Container maxWidth="lg">
-                <Stack direction="row" spacing={2} >
+              </Stack>
+              <Stack direction="row" spacing={2}>
                   <DesktopDatePickerComponent
-                    DesktopDataPickerLabel="Data Inicial"
+                    DesktopDataPickerLabel="Data Inicial *"
                     DesktopDataPickerValue={ initialDate }
                     DesktopDataPickerOnChange={ handleChangeInitialDate }
                     TextFieldComponentDataTestId="input-initial-date"
@@ -77,6 +77,8 @@ const FuncionalForm = () => {
                     TextFieldComponentError={ isInitialDateError }
                     TextFieldComponentHelperText={ 'Error' }
                   />
+              </Stack>
+              <Stack direction="row" spacing={2}>
                   <DesktopDatePickerComponent
                     DesktopDataPickerLabel="Data Final *"
                     DesktopDataPickerValue={ finalDate }
@@ -86,8 +88,7 @@ const FuncionalForm = () => {
                     TextFieldComponentError={ isFinalDateError }
                     TextFieldComponentHelperText={ 'Error' }
                   />
-                </Stack>
-              </Container>
+              </Stack>
             </Stack>
             <Stack direction="row" padding={2} spacing={2}>
               <SelectComponent
@@ -112,7 +113,6 @@ const FuncionalForm = () => {
             <Stack direction="row" padding={2}>
               <TextAreaComponent
                 dataTestId="textarea-observations"
-                params={ register("description") }
                 label="Observações"
                 maxLength={ 1000 }
                 onChange={ handleChangeObservations }
