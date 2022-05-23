@@ -11,6 +11,9 @@ const DesktopDatePickerComponent = ({
   DesktopDataPickerOnChange,
   TextFieldComponentDataTestId,
   TextFieldComponentPlaceholder,
+  TextFieldComponentError,
+  TextFieldComponentHelperText,
+
 }) => {
   return(
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -20,14 +23,16 @@ const DesktopDatePickerComponent = ({
         value={ DesktopDataPickerValue }
         onChange={ DesktopDataPickerOnChange }
         renderInput={
-        (params) => {
-        return <TextField
-          data-testId={ TextFieldComponentDataTestId }
-          { ...params }
-          placeholder={ TextFieldComponentPlaceholder }
-          error={ DesktopDataPickerValue === "Data Inicial" || "Data Final" ? false : true }
-          variant="standard"
-        />}
+          (params) => {
+            return <TextField
+              data-testid={ TextFieldComponentDataTestId }
+              { ...params }
+              placeholder={ TextFieldComponentPlaceholder }
+              error={ TextFieldComponentError }
+              helperText={ TextFieldComponentError ? `${TextFieldComponentHelperText}` : "" }
+              variant="standard"
+            />
+          }
         }
       />
     </LocalizationProvider>
@@ -40,6 +45,8 @@ DesktopDatePickerComponent.propTypes = {
   DesktopDataPickerOnChange: PropTypes.func.isRequired,
   TextFieldComponentDataTestId: PropTypes.string.isRequired,
   TextFieldComponentPlaceholder: PropTypes.string.isRequired,
+  TextFieldComponentError: PropTypes.bool.isRequired,
+  TextFieldComponentHelperText: PropTypes.string.isRequired,
 };
 
 export default DesktopDatePickerComponent;
