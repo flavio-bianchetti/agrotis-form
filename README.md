@@ -58,7 +58,10 @@ Este repositório contém o teste prático "_Agrotis - Form_", desafio técnico 
 
 ---
 
-### Instalação
+### Página do formulário:
+- o formulário pode ser acessado _[aqui](agrotis-form-flavio-bianchetti.surge.sh)_.
+
+### Instalação:
 
 1. Abra o terminal, em um diretório de sua preferência, e faça o clone do projeto:
 ```bash
@@ -79,13 +82,26 @@ Este repositório contém o teste prático "_Agrotis - Form_", desafio técnico 
   npm start 
 ```
 ---
-<!-- ### Desafios encontrados no desenvolvimento: -->
+### Desafios encontrados no desenvolvimento:
+- Aprender a trabalhar com o _[MUI](https://mui.com/pt/)_ em conjunto com o _[React-Hook-Form](https://react-hook-form.com/)_ em um curto intervalo de tempo foi um desafio. Há muito o que aprender ainda.
 
-<!-- ### Problemas não resolvidos: -->
+### Problemas conhecidos não resolvidos:
+- **Avisos de tipagem no console:** os componentes que trabalham com _Date_ e _Numbers_ não estão sendo convertidos para _String_, ocorrendo avisos no console.
+- **Cabeçalho:** alinhar corretamente os itens no cabeçalho.
+- **Botão _'Salvar'_:** a cor do botão precisa ser alterada quando passar o mouse (_css hover_).
+- **Componentes:** a cor dos componentes precisa ser alterada, quando pasar o mouse (_css hover_).
+- **Componentes _Nome_ e _Datas_:** a disposição dos elementos na tela está incorreta conforme o modelo e precisa ser alterada.
+- **Componente _Propriedades_: falta incluir o componente _[ListItemText](https://mui.com/pt/material-ui/api/list-item-text/)_ para ser exibido. Encontrei dificuldade em separar o nome da propriedade do CNPJ ao ser selecionado o item desejado.
+- **Mensagens de alerta/sucesso:** não foram implementadas.
+- **Testes:** Foi feita a cobertura de apenas 61.38% de todos os arquivos.
+- **Complexidade do código:** com a correta utilização do _[MUI](https://mui.com/pt/)_ e do _[React-Hook-Form](https://react-hook-form.com/)_ acredito que a complexidade poderá ser bastante reduzida.
 
-<!-- ### Aprendizados: -->
+### Aprendizados:
+- Utilização do _[MUI](https://mui.com/pt/)_ em conjunto com o _[React-Hook-Form](https://react-hook-form.com/)_.
 
-<!-- ### Considerações finais: -->
+### Considerações finais:
+- Gostaria de agradecer à _[Agrotis](https://www.agrotis.com/solucoes/)_ e a toda a equipe avaliadora pela oportunidade e pelo tempo dispensado na avaliação deste teste técnico.
+
 ---
 
 por _[Flávio Bianchetti - 2022](https://github.com/flavio-bianchetti)_.
