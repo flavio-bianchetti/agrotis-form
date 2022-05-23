@@ -7,3 +7,9 @@ body {
 .span-counter {
   float: right;
 }
+
+.warning {
+  display: flex;
+  align-content: space-between;
+  font-size: 0.8rem;
+}
