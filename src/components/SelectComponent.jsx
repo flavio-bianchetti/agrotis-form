@@ -4,12 +4,13 @@ import {
   FormControl,
   InputLabel,
   Select,
-  MenuItem 
+  MenuItem,
+  FormHelperText,
 } from "@mui/material";
 
 const SelectComponent = ({
-  error,
-  helperText,
+  selectError,
+  selectHelperText,
   inputLabelDescription,
   selectDataTestId,
   selectValue,
@@ -21,14 +22,14 @@ const SelectComponent = ({
       fullWidth
       variant= "standard"
       size="small"
+      error={ selectError }
     >
       <InputLabel>{ inputLabelDescription }</InputLabel>
       <Select
-        data-testId={ selectDataTestId}
-        value={ selectValue }
+        data-testid={ selectDataTestId }
+        defaultValue={ selectValue }
         onChange={ selectOnChange }
-        error={ error }
-        helperText={ helperText }
+        value={ selectValue }
       >
         {
           selectMenuItens.map((item) => {
@@ -37,19 +38,24 @@ const SelectComponent = ({
                 key={ item.id }
                 value={ item.id }
               >
+                { /* documentação: https://mui.com/pt/material-ui/api/list-item-text/ */}
+                {/* <ListItemText primary={ item.name }  secondary={ item.cnpj }/> */}
                 { item.name }
               </MenuItem>
             );
           })
         }
       </Select>
+      <FormHelperText>
+        { selectError === true ? selectHelperText : "" }
+      </FormHelperText>
     </FormControl>
   );
 };
 
 SelectComponent.propTypes = {
-  error: PropTypes.bool.isRequired,
-  helperText: PropTypes.string.isRequired,
+  selectError: PropTypes.bool.isRequired,
+  selectHelperText: PropTypes.string.isRequired,
   inputLabelDescription: PropTypes.string.isRequired,
   selectDataTestId: PropTypes.string.isRequired,
   selectValue: PropTypes.string.isRequired,
